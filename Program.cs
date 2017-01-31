@@ -10,7 +10,7 @@ class Program
     {
         var factory = new LoggerFactory();
         _logger = factory.CreateLogger<Program>();
-        var patterns = new[]
+        var classifications = new[]
         {
                 new RegexClassification
                 {
@@ -33,7 +33,7 @@ class Program
                     Color = ConsoleColor.Green
                 }
             };
-        factory.AddColorizedConsole(patterns);
+        factory.AddColorizedConsole(classifications);
     }
 
     static void Main(string[] args)

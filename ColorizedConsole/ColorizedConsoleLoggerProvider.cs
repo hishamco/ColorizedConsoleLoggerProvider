@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Logging.Console;
-using Microsoft.Extensions.Logging.ColorizedConsole.Classification;
+﻿using Microsoft.Extensions.Logging.ColorizedConsole.Classification;
+using Microsoft.Extensions.Logging.Console;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace Microsoft.Extensions.Logging.ColorizedConsole
 {
