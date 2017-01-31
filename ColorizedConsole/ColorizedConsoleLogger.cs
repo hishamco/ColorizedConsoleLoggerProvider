@@ -176,15 +176,31 @@ namespace Microsoft.Extensions.Logging.ColorizedConsole
 
                     if (Classifications != null)
                     {
+                        const int ConsoleWindowWidth = 80;
                         foreach (var classification in Classifications)
                         {
-                            --System.Console.CursorTop;
+                            if (System.Console.CursorTop > 0)
+                            {
+                                --System.Console.CursorTop;
+                            }
+
                             foreach (Match match in Regex.Matches(message, classification.RegexPattern))
                             {
-                                System.Console.CursorLeft = match.Index + _messagePadding.Length;
-                                Console.Write(match.Value, null, classification.Color);
+                                if (message.Length > ConsoleWindowWidth)
+                                {
+                                    var diff = message.Length / ConsoleWindowWidth;
+                                    System.Console.CursorTop -= diff;
+                                    System.Console.CursorLeft = match.Index + _messagePadding.Length;
+                                    Console.Write(match.Value, null, classification.Color);
+                                    System.Console.CursorTop += diff;
+                                }
+                                else
+                                {
+                                    System.Console.CursorLeft = match.Index + _messagePadding.Length;
+                                    Console.Write(match.Value, null, classification.Color);
+                                }
                             }
-                            System.Console.CursorLeft = message.Length + _messagePadding.Length;
+
                             ++System.Console.CursorTop;
                             System.Console.CursorLeft = 0;
                         }

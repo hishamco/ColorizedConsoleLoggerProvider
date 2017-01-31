@@ -43,7 +43,8 @@ class Program
         _logger.LogInformation("GitHub: https://github.com/hishamco/ColorizedConsoleLoggerProvider");
         _logger.LogWarning("The query \"Select * From Employees\" takes long execution time.");
         _logger.LogError("The query \"Select Top 3 Name From Employees\" causes an error.");
-        _logger.LogInformation("Executing the query \"Select Distinct City,Address From Employees\".");
+        _logger.LogInformation("Executing the query \"Select Distinct City,Address From Employees\" takes long execution time.");
         _logger.LogInformation($"The application stopping @ {DateTime.Now}.");
+        Console.ReadKey();
     }
 }
